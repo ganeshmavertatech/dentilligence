@@ -1,0 +1,2 @@
+C:/Ubuntu/Projects/Averta/dentilligence-app/android/app/.cxx/Debug/5m6o2d5j/x86/CMakeFiles/edit_cache.dir
+C:/Ubuntu/Projects/Averta/dentilligence-app/android/app/.cxx/Debug/5m6o2d5j/x86/CMakeFiles/rebuild_cache.dir
