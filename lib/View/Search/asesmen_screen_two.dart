@@ -2,6 +2,7 @@ import 'package:dentilligence/View/Search/dentist_list_page.dart';
 import 'package:dentilligence/View/Search/doctor_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart'; // Make sure this import path is correct
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AssessmentScreenTwo extends StatefulWidget {
   const AssessmentScreenTwo({super.key});
@@ -44,7 +45,7 @@ class _AssessmentScreenTwoState extends State<AssessmentScreenTwo> {
             ),
             SizedBox(width: 12.w),
             Text(
-              'Assessment',
+              AppLocalizations.of(context)!.assessment,
               style: TextStyle(
                 fontFamily: 'Lato',
                 fontWeight: FontWeight.bold,
@@ -54,8 +55,10 @@ class _AssessmentScreenTwoState extends State<AssessmentScreenTwo> {
             ),
           ],
         ),
+        backgroundColor: Colors.white,
       ),
       body: SafeArea(
+        
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
@@ -133,7 +136,7 @@ class _AssessmentScreenTwoState extends State<AssessmentScreenTwo> {
                     ),
                     alignment: Alignment.center,
                     child: Text(
-                      'Continue',
+                      AppLocalizations.of(context)!.continueText,
                       style: TextStyle(
                         fontFamily: 'Lato',
                         fontWeight: FontWeight.bold,

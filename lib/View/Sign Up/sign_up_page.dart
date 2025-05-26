@@ -4,6 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 import '../../Controller/registration_controller.dart';
 
@@ -53,7 +55,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                   // Sign In text
                   Text(
-                    "Sign Up",
+                    AppLocalizations.of(context)!.signUp,
                     style: GoogleFonts.corben(
                       fontSize: 32,
                       fontWeight: FontWeight.w400,
@@ -61,7 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: 10),
                    Text(
-                    "Enter your details to create your account",
+                    AppLocalizations.of(context)!.signUpDescription,
                      style: GoogleFonts.lato(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
@@ -69,7 +71,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: 20),
                   CustomField(
-            labelText: "Full name",
+            labelText: AppLocalizations.of(context)!.fullName,
             prefixIcon: Image.asset('assets/Icons/user.png',height: 16,width: 16,color: Colors.black,),
             controller: _controller.firstNameController,
             keyboardType: TextInputType.name,
@@ -92,7 +94,7 @@ class _SignUpPageState extends State<SignUpPage> {
             
                   // Email field
                   CustomField(
-            labelText: "Email Address",
+            labelText: AppLocalizations.of(context)!.emailAddress,
             controller: _controller.emailController,
             prefixIcon: Image.asset('assets/Icons/mage_email.png',height: 16,width: 16,color: Colors.black,),
             keyboardType: TextInputType.emailAddress,
@@ -111,7 +113,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
            const SizedBox(height: 10),
           CustomField(
-            labelText: "Mobile Number",
+            labelText: AppLocalizations.of(context)!.mobileNumber,
             controller: _controller.mobileNumberController,
             prefixIcon: Image.asset('assets/Icons/mobile_icon.png',height: 16,width: 16,color: Colors.black,),
             keyboardType: TextInputType.phone,
@@ -129,7 +131,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
            const SizedBox(height: 10),
             CustomField(
-            labelText: "Pincode",
+            labelText: AppLocalizations.of(context)!.pinCode,
             controller: _controller.pinCodeController,
             prefixIcon: Image.asset('assets/Icons/pincode.png',height: 10,width: 10,color: Colors.black,),
             suffixIcon: Image.asset('assets/Icons/location.png',height: 10,width: 10,color: Colors.black,),
@@ -168,12 +170,12 @@ class _SignUpPageState extends State<SignUpPage> {
               Expanded(
                 child: RichText(
                   text: TextSpan(
-                    text: "I agree to ",
+                    text: AppLocalizations.of(context)!.iAgree,
                     style: GoogleFonts.kanit(
                         color: ColorsConstants.textSecondaryColor, fontSize: 14),
                     children: [
                       TextSpan(
-                        text: "Policy terms",
+                        text: AppLocalizations.of(context)!.polcy,
                         style: GoogleFonts.kanit(
                           color: ColorsConstants.textPrimaryColor,
                           decoration:
@@ -183,12 +185,12 @@ class _SignUpPageState extends State<SignUpPage> {
                         recognizer: TapGestureRecognizer()..onTap = () {},
                       ),
                       TextSpan(
-                        text: " and ",
+                        text: AppLocalizations.of(context)!.and,
                         style:
                             TextStyle(color: ColorsConstants.textSecondaryColor),
                       ),
                       TextSpan(
-                        text: "Terms of service",
+                        text: AppLocalizations.of(context)!.terms,
                         style: GoogleFonts.kanit(
                           color: ColorsConstants.textPrimaryColor,
                           decoration:
@@ -219,7 +221,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         //   builder: (context) => SignUpVerifyOtpPage(),
                         // ));
                       },
-                      child: Text("Continue",
+                      child: Text(
+                        AppLocalizations.of(context)!.continueText,
                       style: GoogleFonts.lato(
                       fontSize: 16,
                       color: Colors.white,
@@ -243,7 +246,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       Expanded(child: Divider()),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8),
-                        child: Text("OR"),
+                        child: Text(
+                          AppLocalizations.of(context)!.or,
+                          style: GoogleFonts.lato(
+                            fontSize: 14,
+                            color: ColorsConstants.textSecondaryColor,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ),
                       Expanded(child: Divider()),
                     ],
@@ -254,7 +264,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Already have an account?",
+                      Text(AppLocalizations.of(context)!.alreadyHaveAccount,
                       style: GoogleFonts.lato(
                       fontSize: 14,
                       color: ColorsConstants.textSecondaryColor,
@@ -270,7 +280,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text("Sign In",
+                      child: Text(
+                        AppLocalizations.of(context)!.signIn,
                       style: GoogleFonts.lato(
                       fontSize: 16,
                       color: ColorsConstants.buttonColor,

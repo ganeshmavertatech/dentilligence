@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FilterScreen extends StatefulWidget {
   const FilterScreen({super.key});
@@ -15,6 +16,7 @@ class _FilterScreenState extends State<FilterScreen> {
   List<int> selectedRatings = [4, 5];
   RangeValues priceRange = const RangeValues(20, 150);
   double distance = 50;
+  Set<String> selectedLanguages = {'english'}; // Default selected
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +60,33 @@ class _FilterScreenState extends State<FilterScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 20.h),
+                    // Select Language
+                    Text(
+                      AppLocalizations.of(context)!.selectLanguage,
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                        color: const Color(0xFF2A2A2A),
+                      ),
+                    ),
+                    SizedBox(height: 15.h),
+                    Wrap(
+                      spacing: 20.w,
+                      runSpacing: 10.h,
+                      children: [
+                        _buildLanguageCheckbox(
+                            value: 'english', label: AppLocalizations.of(context)!.english),
+                        _buildLanguageCheckbox(value: 'hindi', label: AppLocalizations.of(context)!.hindi),
+                        _buildLanguageCheckbox(
+                            value: 'ukrainian', label: AppLocalizations.of(context)!.ukrainian),
+                      ],
+                    ),
+                    const Divider(
+                        color: Color(0xFFE0E0E0), thickness: 1, height: 40),
 
                     // Sort By (Verification Status)
                     Text(
-                      'Sort By',
+                      AppLocalizations.of(context)!.sortBy,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -74,7 +99,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         _buildRadioButton(
                           value: 'both',
                           groupValue: verificationStatus,
-                          label: 'Both',
+                          label: AppLocalizations.of(context)!.both,
                           isSelected: verificationStatus == 'both',
                           onChanged: (value) {
                             setState(() {
@@ -86,7 +111,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         _buildRadioButton(
                           value: 'verified',
                           groupValue: verificationStatus,
-                          label: 'Verified',
+                          label: AppLocalizations.of(context)!.verified,
                           isSelected: verificationStatus == 'verified',
                           onChanged: (value) {
                             setState(() {
@@ -98,7 +123,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         _buildRadioButton(
                           value: 'unverified',
                           groupValue: verificationStatus,
-                          label: 'Unverified',
+                          label: AppLocalizations.of(context)!.unverified,
                           isSelected: verificationStatus == 'unverified',
                           onChanged: (value) {
                             setState(() {
@@ -108,11 +133,12 @@ class _FilterScreenState extends State<FilterScreen> {
                         ),
                       ],
                     ),
-                    const Divider(color: Color(0xFFE0E0E0), thickness: 1, height: 40),
+                    const Divider(
+                        color: Color(0xFFE0E0E0), thickness: 1, height: 40),
 
                     // Gender
                     Text(
-                      'Gender',
+                      AppLocalizations.of(context)!.genderFilter,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -125,7 +151,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         _buildRadioButton(
                           value: 'both',
                           groupValue: gender,
-                          label: 'Both',
+                          label: AppLocalizations.of(context)!.both,
                           isSelected: gender == 'both',
                           onChanged: (value) {
                             setState(() {
@@ -137,7 +163,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         _buildRadioButton(
                           value: 'male',
                           groupValue: gender,
-                          label: 'Male',
+                          label: AppLocalizations.of(context)!.male,
                           isSelected: gender == 'male',
                           onChanged: (value) {
                             setState(() {
@@ -149,7 +175,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         _buildRadioButton(
                           value: 'female',
                           groupValue: gender,
-                          label: 'Female',
+                          label: AppLocalizations.of(context)!.female,
                           isSelected: gender == 'female',
                           onChanged: (value) {
                             setState(() {
@@ -159,11 +185,12 @@ class _FilterScreenState extends State<FilterScreen> {
                         ),
                       ],
                     ),
-                    const Divider(color: Color(0xFFE0E0E0), thickness: 1, height: 40),
+                    const Divider(
+                        color: Color(0xFFE0E0E0), thickness: 1, height: 40),
 
                     // Ratings
                     Text(
-                      'Ratings',
+                      AppLocalizations.of(context)!.ratings,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -228,11 +255,12 @@ class _FilterScreenState extends State<FilterScreen> {
                         }),
                       ),
                     ),
-                    const Divider(color: Color(0xFFE0E0E0), thickness: 1, height: 40),
+                    const Divider(
+                        color: Color(0xFFE0E0E0), thickness: 1, height: 40),
 
                     // Pricing
                     Text(
-                      'Pricing',
+                      AppLocalizations.of(context)!.pricing,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -244,14 +272,14 @@ class _FilterScreenState extends State<FilterScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Minimum',
+                          AppLocalizations.of(context)!.minimum,
                           style: TextStyle(
                             fontSize: 10.sp,
                             color: const Color(0xFF919191),
                           ),
                         ),
                         Text(
-                          'Maximum',
+                          AppLocalizations.of(context)!.maximum,
                           style: TextStyle(
                             fontSize: 10.sp,
                             color: const Color(0xFF919191),
@@ -287,7 +315,7 @@ class _FilterScreenState extends State<FilterScreen> {
 
                     // Kilometers
                     Text(
-                      'Kilometers',
+                      AppLocalizations.of(context)!.kilometers,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -313,7 +341,8 @@ class _FilterScreenState extends State<FilterScreen> {
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.location_on, size: 16.sp, color: const Color(0xFF2A2A2A)),
+                            Icon(Icons.location_on,
+                                size: 16.sp, color: const Color(0xFF2A2A2A)),
                             SizedBox(width: 5.w),
                             Text(
                               '0km',
@@ -373,7 +402,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         ),
                       ),
                       child: Text(
-                        'Reset',
+                        AppLocalizations.of(context)!.reset,
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
@@ -404,7 +433,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         ),
                       ),
                       child: Text(
-                        'Apply',
+                        AppLocalizations.of(context)!.apply,
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
@@ -442,7 +471,8 @@ class _FilterScreenState extends State<FilterScreen> {
           style: TextStyle(
             fontSize: 14.sp,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-            color: isSelected ? const Color(0xFF2A2A2A) : const Color(0xFF909090),
+            color:
+                isSelected ? const Color(0xFF2A2A2A) : const Color(0xFF909090),
           ),
         ),
       ],
@@ -467,6 +497,38 @@ class _FilterScreenState extends State<FilterScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildLanguageCheckbox({
+    required String value,
+    required String label,
+  }) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Checkbox(
+          value: selectedLanguages.contains(value),
+          onChanged: (bool? checked) {
+            setState(() {
+              if (checked == true) {
+                selectedLanguages.add(value);
+              } else {
+                selectedLanguages.remove(value);
+              }
+            });
+          },
+          activeColor: const Color(0xFF469BFF),
+        ),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.normal,
+            color: const Color(0xFF2A2A2A),
+          ),
+        ),
+      ],
     );
   }
 }

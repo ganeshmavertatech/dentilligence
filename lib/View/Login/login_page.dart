@@ -3,7 +3,7 @@ import 'package:dentilligence/constance/colors_constance.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Controller/login_controller.dart';
 import '../Sign Up/sign_up_page.dart';
 
@@ -53,7 +53,7 @@ final LoginController _controller=Get.put(LoginController());
 
                   // Sign In text
                   Text(
-                    "Sign In",
+                    AppLocalizations.of(context)!.signIn,
                     style: GoogleFonts.corben(
                       fontSize: 32,
                       fontWeight: FontWeight.w400,
@@ -61,7 +61,7 @@ final LoginController _controller=Get.put(LoginController());
                   ),
                   SizedBox(height: 20),
                    Text(
-                    "Enter your details to access your accounts",
+                    AppLocalizations.of(context)!.signInDescription,
                      style: GoogleFonts.lato(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
@@ -74,7 +74,7 @@ final LoginController _controller=Get.put(LoginController());
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       prefixIcon: Image.asset('assets/Icons/mage_email.png',height: 16,width: 16,color: Colors.black,),
-                      labelText: 'Email address',
+                      labelText: AppLocalizations.of(context)!.emailAddress,
                       labelStyle: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w400,color: ColorsConstants.textPrimaryColor),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -93,7 +93,7 @@ final LoginController _controller=Get.put(LoginController());
                           builder: (context) => VerifyOtpPage(),
                         ));
                       },
-                      child: Text("Continue",
+                      child: Text(AppLocalizations.of(context)!.continueText,
                       style: GoogleFonts.lato(
                       fontSize: 16,
                       color: Colors.white,
@@ -117,7 +117,7 @@ final LoginController _controller=Get.put(LoginController());
                       Expanded(child: Divider()),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8),
-                        child: Text("OR"),
+                        child: Text(AppLocalizations.of(context)!.or),
                       ),
                       Expanded(child: Divider()),
                     ],
@@ -128,7 +128,7 @@ final LoginController _controller=Get.put(LoginController());
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Don't have an account?",
+                      Text(AppLocalizations.of(context)!.dontHaveAccount,
                       style: GoogleFonts.lato(
                       fontSize: 14,
                       color: Colors.black,
@@ -146,7 +146,7 @@ final LoginController _controller=Get.put(LoginController());
                           builder: (context) => SignUpPage(),
                         ));
                       },
-                      child: Text("Sign Up",
+                      child: Text(AppLocalizations.of(context)!.signUp,
                       style: GoogleFonts.lato(
                       fontSize: 16,
                       color: ColorsConstants.buttonColor,

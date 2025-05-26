@@ -49,7 +49,7 @@ class DentistListScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 12.w),
                   Text(
-                    AppLocalizations.of(context)!.home,
+                    AppLocalizations.of(context)!.listofdentists,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -263,7 +263,7 @@ class DentistListScreen extends StatelessWidget {
           clipBehavior: Clip.none, // Allow overflow
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(12.r),
               child: Image.asset(
                 imageUrl,
                 width: 82.w,

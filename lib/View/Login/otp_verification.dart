@@ -3,6 +3,7 @@ import 'package:dentilligence/constance/colors_constance.dart';
 import 'package:dentilligence/constance/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VerifyOtpPage extends StatefulWidget {
   @override
@@ -86,7 +87,7 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
                                   ),
                                   const SizedBox(height: 16),
                                   Text(
-                                    "OTP Verification",
+                                    AppLocalizations.of(context)!.otp,
                                     style: GoogleFonts.corben(
                                       fontSize: 30,
                                       fontWeight: FontWeight.w400,
@@ -97,7 +98,7 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
                                   RichText(
                                     textAlign: TextAlign.center,
                                     text: TextSpan(
-                                      text: "We have sent 6 digit verification code on your",
+                                      text: AppLocalizations.of(context)!.otpDescription,
                                        style: GoogleFonts.lato(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
@@ -148,7 +149,7 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
                                     // Handle resend OTP
                                   },
                                   child: Text(
-                                    "Didn't get an code?",
+                                    AppLocalizations.of(context)!.otpNotReceived,
                                     style: GoogleFonts.lato(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
@@ -162,7 +163,7 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
                                   },
                                   child: RichText(
                                     text: TextSpan(
-                                      text: "Resend Code",
+                                      text: AppLocalizations.of(context)!.resendCode,
                                       style: GoogleFonts.lato(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,

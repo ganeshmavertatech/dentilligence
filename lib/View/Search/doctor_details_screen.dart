@@ -29,7 +29,12 @@ class DoctorDetailsPage extends StatelessWidget {
                 Positioned(
                   top: 55.h,
                   left: 20.w,
-                  child: _buildCircleButton(Icons.arrow_back),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: _buildCircleButton(Icons.arrow_back),
+                  ),
                 ),
                 Positioned(
                   top: 55.h,
@@ -96,7 +101,15 @@ class DoctorDetailsPage extends StatelessWidget {
                     text: "2.4mi, 80 Ridgeway road, Sheffield, S12 2SX",
                   ),
                   SizedBox(height: 30.h),
-
+                  
+                  // Language spoken
+                  _buildSectionHeader(title: AppLocalizations.of(context)!.languageSpoken), 
+                  SizedBox(height: 10.h),
+                  _buildLangRow(
+                    icon: Icons.language,
+                    text: "English, Hindi, Marathi",
+                  ),
+                  SizedBox(height: 30.h),
                   // Featured services
                   _buildSectionHeader(title: AppLocalizations.of(context)!.featuredServices),
                   SizedBox(height: 10.h),
@@ -523,6 +536,19 @@ class DoctorDetailsPage extends StatelessWidget {
           Text(text, style: TextStyle(fontSize: 14.sp)),
         ],
       ),
+    );
+  }
+
+  Widget _buildLangRow({required IconData icon, required String text}) {
+    return Row(
+      children: [
+        Icon(icon, size: 20.sp, color: const Color(0xFF909090)),
+        SizedBox(width: 5.w),
+        Text(
+          text,
+          style: TextStyle(fontSize: 14.sp),
+        ),
+      ],
     );
   }
 

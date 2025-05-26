@@ -151,7 +151,7 @@ class OnboardingScreen extends StatelessWidget {
                   Navigator.push(context,MaterialPageRoute(builder:(context) => SignInScreen()));
                 },
                  child: Text(
-                  'Skip',
+                  AppLocalizations.of(context)!.skip,
                   style: GoogleFonts.lato(
                     fontSize: 16,
                     color: Colors.black,

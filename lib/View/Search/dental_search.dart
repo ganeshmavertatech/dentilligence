@@ -31,7 +31,10 @@ class _SearchScreenState extends State<SearchScreen> {
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.arrow_back, size: 24),
+                          GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: Icon(Icons.arrow_back, size: 24),
+                          ),
                           SizedBox(width: 7),
                           Icon(
                             Icons.location_on,

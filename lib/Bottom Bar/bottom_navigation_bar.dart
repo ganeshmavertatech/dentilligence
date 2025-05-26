@@ -61,117 +61,147 @@ class _NavigationBarState extends State<NavigationBar> {
     );
   }
 
-  Widget _buildNavItem(String asset, String label, int index) {
-    final isActive = _selectedIndex == index;
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque, // Makes the entire area tappable
-      onTap: () => _onItemTapped(index),
-      child: SizedBox(
-        width: 60.w, // Give enough tap area
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (isActive)
-              Container(
-                height: 2.h,
+ Widget _buildNavItem(String asset, String label, int index) {
+  final isActive = _selectedIndex == index;
+  return GestureDetector(
+    behavior: HitTestBehavior.opaque,
+    onTap: () => _onItemTapped(index),
+    child: SizedBox(
+      width: 60.w,
+      height: 100.h,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Positioned(
+            top: 0, // Move this higher if you want it more above
+            child: isActive
+                ? Container(
+                    height: 3.h,
+                    width: 55.w,
+                    color: const Color(0xFF469BFF),
+                  )
+                : const SizedBox.shrink(),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 12.h), // Add spacing to push content down
+              Image.asset(
+                asset,
                 width: 24.w,
-                color: const Color(0xFF469BFF),
-              ),
-            SizedBox(height: isActive ? 4.h : 6.h),
-            Image.asset(
-              asset,
-              width: 24.w,
-              height: 24.h,
-              color: isActive ? const Color(0xFF469BFF) : const Color(0xFF909090),
-            ),
-            SizedBox(height: 6.h),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 12.sp,
-                fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+                height: 24.h,
                 color: isActive ? const Color(0xFF469BFF) : const Color(0xFF909090),
               ),
-            ),
-          ],
-        ),
+              SizedBox(height: 6.h),
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+                  color: isActive ? const Color(0xFF469BFF) : const Color(0xFF909090),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 
-  Widget _buildImageNavItem(String imagePath, String label, int index) {
-    final isActive = _selectedIndex == index;
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => _onItemTapped(index),
-      child: SizedBox(
-        width: 60.w,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (isActive)
-              Container(
-                height: 2.h,
-                width: 24.w,
+ Widget _buildImageNavItem(String imagePath, String label, int index) {
+  final isActive = _selectedIndex == index;
+  return GestureDetector(
+    behavior: HitTestBehavior.opaque,
+    onTap: () => _onItemTapped(index),
+    child: SizedBox(
+      width: 60.w,
+      height: 90.h,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          // Position the indicator at the top
+          if (isActive)
+            Positioned(
+              top: 0,
+              child: Container(
+                height: 3.h,
+                width: 55.w,
                 color: const Color(0xFF469BFF),
               ),
-            SizedBox(height: isActive ? 4.h : 6.h),
-            Image.asset(
-              imagePath,
-              width: 24.w,
-              height: 24.h,
-              color: isActive ? const Color(0xFF469BFF) : const Color(0xFF909090),
             ),
-            SizedBox(height: 6.h),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 12.sp,
-                fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
-                color: isActive ? const Color(0xFF2A2A2A) : const Color(0xFF909090),
+          // Main content
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 12.h), // Add top spacing to separate from indicator
+              Image.asset(
+                imagePath,
+                width: 24.w,
+                height: 24.h,
+                color: isActive ? const Color(0xFF469BFF) : const Color(0xFF909090),
               ),
-            ),
-          ],
-        ),
+              SizedBox(height: 6.h),
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+                  color: isActive ? const Color(0xFF2A2A2A) : const Color(0xFF909090),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildCenterItem(String imagePath, String label, int index) {
-    final isActive = _selectedIndex == index;
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => _onItemTapped(index),
-      child: SizedBox(
-        width: 60.w,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (isActive)
-              Container(
-                height: 2.h,
-                width: 24.w,
+  final isActive = _selectedIndex == index;
+  return GestureDetector(
+    behavior: HitTestBehavior.opaque,
+    onTap: () => _onItemTapped(index),
+    child: SizedBox(
+      width: 60.w,
+      height: 90.h,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          if (isActive)
+            Positioned(
+              top: 0,
+              child: Container(
+                height: 3.h,
+                width: 55.w,
                 color: const Color(0xFF469BFF),
               ),
-            SizedBox(height: isActive ? 4.h : 6.h),
-            Image.asset(
-              imagePath,
-              width: 24.w,
-              height: 24.h,
-              color: isActive ? const Color(0xFF469BFF) : const Color(0xFF909090),
             ),
-            SizedBox(height: 6.h),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 12.sp,
-                fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
-                color: isActive ? const Color(0xFF2A2A2A) : const Color(0xFF909090),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 12.h), // Create spacing under the indicator
+              Image.asset(
+                imagePath,
+                width: 24.w,
+                height: 24.h,
+                color: isActive ? const Color(0xFF469BFF) : const Color(0xFF909090),
               ),
-            ),
-          ],
-        ),
+              SizedBox(height: 6.h),
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 10.sp,
+                  fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+                  color: isActive ? const Color(0xFF2A2A2A) : const Color(0xFF909090),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 }

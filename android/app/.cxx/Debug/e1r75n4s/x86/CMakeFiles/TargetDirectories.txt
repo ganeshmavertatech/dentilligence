@@ -1,0 +1,2 @@
+C:/Users/vrnik/OneDrive/Desktop/dentilligence/android/app/.cxx/Debug/e1r75n4s/x86/CMakeFiles/edit_cache.dir
+C:/Users/vrnik/OneDrive/Desktop/dentilligence/android/app/.cxx/Debug/e1r75n4s/x86/CMakeFiles/rebuild_cache.dir

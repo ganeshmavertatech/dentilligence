@@ -1,5 +1,6 @@
 import 'package:dentilligence/View/Video%20file/after_all_data_taken.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GetConsultationPage extends StatefulWidget {
@@ -40,7 +41,7 @@ class _GetConsultationPageState extends State<GetConsultationPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Patient Information',
+                          AppLocalizations.of(context)!.patientInfo,
                           style: TextStyle(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
@@ -199,7 +200,7 @@ class _GetConsultationPageState extends State<GetConsultationPage> {
                         ),
                         child: Center(
                           child: Text(
-                            'Submit & Get results',
+                            AppLocalizations.of(context)!.submitGetResults,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

@@ -1,306 +1,308 @@
 import 'package:dentilligence/View/Login/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnboardingScreenThree extends StatelessWidget {
   const OnboardingScreenThree({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Initialize screenutil
+    ScreenUtil.init(context, designSize: const Size(390, 844));
+
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SizedBox(
-        width: 390,
-        height: 844,
+      body: SafeArea(
         child: Stack(
           children: [
-            // Top status bar line
-            
-
-            // Page indicator dots
-            Positioned(
-              top: 496,
-              left: 168,
-              child: Container(
-                width: 5,
-                height: 5,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF469BFF).withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(2.5),
-                ),
-              ),
-            ),
-            Positioned(
-              top: 496,
-              left: 175,
-              child: Container(
-                width: 5,
-                height: 5,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF469BFF).withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(2.5),
-                ),
-              ),
-            ),
-            Positioned(
-              top: 496,
-              left: 182,
-              child: Container(
-                width: 40,
-                height: 5,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF469BFF),
-                  borderRadius: BorderRadius.circular(2.5),
-                ),
-              ),
-            ),
-
-            // Title text
-            Positioned(
-              top: 520,
-              left: 30,
-              child: Text(
-                'Meetups at Your \nConvenience',
-                style: GoogleFonts.corben(
-                  fontWeight: FontWeight.w700,
-                  color: const Color(0xFF2A2A2A),
-                  fontSize: 22,
-                  letterSpacing: 0.88,
-                  height: 32 / 22,
-                ),
-              ),
-            ),
-
-            // Description text
-            Positioned(
-              top: 590,
-              left: 30,
-              child: Text(
-                'Book in-clinic appointments that fit your schedule. \nQuick, easy, and stress-free dental visits — just for you',
-                style: GoogleFonts.lato(
-                  fontWeight: FontWeight.w400,
-                  color: const Color(0xFF959595),
-                  fontSize: 14,
-                  height: 20 / 14,
-                ),
-              ),
-            ),
-
-            // Get Started button
-            Positioned(
-              top: 650,
-              left: 30,
-              child: GestureDetector(
-               onTap: (){
-                Navigator.push(context,MaterialPageRoute(builder:(context) => SignInScreen()));
-               },
-              child:       Container(
-                width: 330,
-                height: 56,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF469BFF),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Get Started',
-                    style: TextStyle(
-                      fontFamily: 'Lato',
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                      fontSize: 16,
+            // Main content column
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Illustration
+                  SizedBox(
+                    height: 370.h,
+                    child: Center(
+                      child: _buildIllustration(),
                     ),
                   ),
-                ),
-              ),
-              ),
-            ),
+                  SizedBox(height: 60.h),
 
-            // Sign Up button
-            Positioned(
-              top: 720,
-              left: 30,
-              child: Container(
-                width: 330,
-                height: 56,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: const Color(0xFF469BFF),
-                    width: 1,
-                  ),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      fontFamily: 'Lato',
+                  // Page indicator dots
+                  _buildPageIndicators(),
+                  SizedBox(height: 24.h),
+
+                  // Title text
+                  Text(
+                    AppLocalizations.of(context)!.meetups,
+                    style: GoogleFonts.corben(
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF469BFF),
-                      fontSize: 16,
-                      height: 1,
+                      color: const Color(0xFF2A2A2A),
+                      fontSize: 22.sp,
+                      letterSpacing: 0.88,
+                      height: 32.h / 22.sp,
                     ),
                   ),
-                ),
-              ),
-            ),
+                  SizedBox(height: 40.h),
 
-            // Complex illustration
-            Positioned(
-              top: 77,
-              left: 62,
-              child: SizedBox(
-                width: 271,
-                height: 370,
-                child: Stack(
-                  children: [
-                    // Main illustration components
-                    Positioned(
-                      top: 59,
-                      left: 0,
-                      child: SizedBox(
-                        width: 271,
-                        height: 311,
-                        child: Stack(
-                          children: [
-                            // Frame with all the vector images
-                            Positioned(
-                              top: 70,
-                              left: 6,
-                              child: SizedBox(
-                                width: 265,
-                                height: 239,
-                                child: Stack(
-                                  children: [
-                                    // All the vector images would go here
-                                    // This is simplified - in a real app you'd need to 
-                                    // either use the exact images or recreate them with Flutter
-                                    Image.asset(
-                                      'assets/Images/Frame 2.png',
-                                      width: 265,
-                                      height: 329,
-                                    ),
-                                    // Add all other vector images similarly...
-                                  ],
-                                ),
-                              ),
-                            ),
+                  // Description text
+                  Text(
+                    AppLocalizations.of(context)!.meetBook,
+                    style: GoogleFonts.lato(
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xFF959595),
+                      fontSize: 14.sp,
+                      height: 20.h / 14.sp,
+                    ),
+                  ),
+                  SizedBox(height: 40.h),
 
-                            // Gray line at bottom
-                            Positioned(
-                              top: 308,
-                              left: 0,
-                              child: Container(
-                                width: 232,
-                                height: 3,
-                                color: const Color(0xFFB1B1B1),
-                              ),
-                            ),
-
-                            // Right circle
-                            Positioned(
-                              top: 0,
-                              left: 188,
-                              child: Container(
-                                width: 76,
-                                height: 76,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(38),
-                                  border: Border.all(
-                                    color: const Color(0xFFEDF5FF),
-                                    width: 6,
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            // Left circle
-                            Positioned(
-                              top: 16,
-                              left: 3,
-                              child: Container(
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(35),
-                                  border: Border.all(
-                                    color: const Color(0xFFEDF5FF),
-                                    width: 6,
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            // Mingcute icon
-                            Positioned(
-                              top: 35,
-                              left: 24,
-                              child: Transform.rotate(
-                                angle: 16.74 * (3.141592653589793 / 180),
-                                child: SizedBox(
-                                  width: 32,
-                                  height: 32,
-                                  child: Transform.rotate(
-                                    angle: -16.74 * (3.141592653589793 / 180),
-                                    child: Image.asset(
-                                      'assets/Images/notification.png',
-                                      width: 31,
-                                      height: 35,
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            // Calendar icon
-                            Positioned(
-                              top: 17,
-                              left: 205,
-                              child: Image.asset(
-                                'assets/Images/calender.png',
-                                width: 41,
-                                height: 41,
-                              ),
-                            ),
-                          ],
+                  // Get Started button
+                  SizedBox(
+                    width: 330.w,
+                    height: 56.h,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SignInScreen()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF469BFF),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.r),
                         ),
                       ),
-                    ),
-
-                    // Center circle with checkmark
-                    Positioned(
-                      top: 0,
-                      left: 85,
-                      child: Container(
-                        width: 97,
-                        height: 97,
-                        decoration: BoxDecoration(
+                      child: Text(
+                        AppLocalizations.of(context)!.getStarted,
+                        style: TextStyle(
+                          fontFamily: 'Lato',
+                          fontWeight: FontWeight.w700,
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(48.5),
-                          border: Border.all(
-                            color: const Color(0xFFFFFAEC),
-                            width: 6,
-                          ),
-                        ),
-                        child: Center(
-                          child: Image.asset(
-                            'assets/Images/verified.png',
-                            width: 65,
-                            height: 65,
-                          ),
+                          fontSize: 16.sp,
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 14.h),
+
+                  // Sign Up button
+                  SizedBox(
+                    width: 330.w,
+                    height: 56.h,
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide(
+                          color: const Color(0xFF469BFF),
+                          width: 1.w,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.r),
+                        ),
+                      ),
+                      child: Text(
+                        AppLocalizations.of(context)!.signUp,
+                        style: TextStyle(
+                          fontFamily: 'Lato',
+                          fontWeight: FontWeight.w700,
+                          color: const Color(0xFF469BFF),
+                          fontSize: 16.sp,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildPageIndicators() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 5.w,
+          height: 5.h,
+          decoration: BoxDecoration(
+            color: const Color(0xFF469BFF).withOpacity(0.5),
+            borderRadius: BorderRadius.circular(2.5.r),
+          ),
+        ),
+        SizedBox(width: 7.w),
+        Container(
+          width: 5.w,
+          height: 5.h,
+          decoration: BoxDecoration(
+            color: const Color(0xFF469BFF).withOpacity(0.5),
+            borderRadius: BorderRadius.circular(2.5.r),
+          ),
+        ),
+        SizedBox(width: 7.w),
+        Container(
+          width: 40.w,
+          height: 5.h,
+          decoration: BoxDecoration(
+            color: const Color(0xFF469BFF),
+            borderRadius: BorderRadius.circular(2.5.r),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildIllustration() {
+    return SizedBox(
+      width: 271.w,
+      height: 370.h,
+      child: Stack(
+        children: [
+          // Main illustration components
+          Positioned(
+            top: 59.h,
+            left: 0,
+            child: SizedBox(
+              width: 271.w,
+              height: 311.h,
+              child: Stack(
+                children: [
+                  // Frame with all the vector images
+                  Positioned(
+                    top: 70.h,
+                    left: 6.w,
+                    child: SizedBox(
+                      width: 265.w,
+                      height: 239.h,
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            'assets/Images/Frame 2.png',
+                            width: 265.w,
+                            height: 329.h,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  // Gray line at bottom
+                  Positioned(
+                    top: 308.h,
+                    left: 0,
+                    child: Container(
+                      width: 232.w,
+                      height: 3.h,
+                      color: const Color(0xFFB1B1B1),
+                    ),
+                  ),
+
+                  // Right circle
+                  Positioned(
+                    top: 0,
+                    left: 188.w,
+                    child: Container(
+                      width: 76.w,
+                      height: 76.h,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(38.r),
+                        border: Border.all(
+                          color: const Color(0xFFEDF5FF),
+                          width: 6.w,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // Left circle
+                  Positioned(
+                    top: 16.h,
+                    left: 3.w,
+                    child: Container(
+                      width: 70.w,
+                      height: 70.h,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(35.r),
+                        border: Border.all(
+                          color: const Color(0xFFEDF5FF),
+                          width: 6.w,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // Mingcute icon
+                  Positioned(
+                    top: 35.h,
+                    left: 24.w,
+                    child: Transform.rotate(
+                      angle: 16.74 * (3.141592653589793 / 180),
+                      child: SizedBox(
+                        width: 32.w,
+                        height: 32.h,
+                        child: Transform.rotate(
+                          angle: -16.74 * (3.141592653589793 / 180),
+                          child: Image.asset(
+                            'assets/Images/notification.png',
+                            width: 31.w,
+                            height: 35.h,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // Calendar icon
+                  Positioned(
+                    top: 17.h,
+                    left: 205.w,
+                    child: Image.asset(
+                      'assets/Images/calender.png',
+                      width: 41.w,
+                      height: 41.h,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // Center circle with checkmark
+          Positioned(
+            top: 0,
+            left: 85.w,
+            child: Container(
+              width: 97.w,
+              height: 97.h,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(48.5.r),
+                border: Border.all(
+                  color: const Color(0xFFFFFAEC),
+                  width: 6.w,
+                ),
+              ),
+              child: Center(
+                child: Image.asset(
+                  'assets/Images/verified.png',
+                  width: 65.w,
+                  height: 65.h,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

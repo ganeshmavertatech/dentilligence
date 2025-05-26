@@ -1,8 +1,8 @@
 import 'package:dentilligence/View/Video%20file/findings_screen_two.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FindingsScreen extends StatelessWidget {
   const FindingsScreen({super.key});
@@ -21,7 +21,7 @@ class FindingsScreen extends StatelessWidget {
                 SizedBox(height: 40.h),
                 Center(
                   child: Text(
-                    'Findings',
+                    AppLocalizations.of(context)!.findings,
                     style: GoogleFonts.lato(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
@@ -31,7 +31,7 @@ class FindingsScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 60.h),
                 Text(
-                  'Why do we ask for photos\nof your teeth?',
+                  AppLocalizations.of(context)!.whyPhotos,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                     fontSize: 24.sp,
@@ -67,7 +67,7 @@ class FindingsScreen extends StatelessWidget {
 
                       SizedBox(height: 20.h),
                       Text(
-                        'Concerns',
+                        AppLocalizations.of(context)!.concerns,
                         style: GoogleFonts.lato(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w700,
@@ -77,24 +77,24 @@ class FindingsScreen extends StatelessWidget {
                       SizedBox(height: 12.h),
                       _iconTextRow(
                         text:
-                            'It will help assigned dentist understand and\n diagnose your oral health concerns.',
+                            AppLocalizations.of(context)!.helpsDentist,
                       ),
                       SizedBox(height: 12.h),
                       _iconTextRow(
                         text:
-                            'It will help to prepare more personalized report\n with maximum clarity of treatments.',
+                            AppLocalizations.of(context)!.helpsReport,
                       ),
                       SizedBox(height: 12.h),
                       _iconTextRow(
                         text:
-                            'It will help to preview the post treatment\n visualization of your smile.',
+                            AppLocalizations.of(context)!.helpsPreview,
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 40.h),
                 Text(
-                  'How it works?',
+                  AppLocalizations.of(context)!.howItWorks,
                   style: GoogleFonts.lato(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w700,
@@ -119,7 +119,7 @@ class FindingsScreen extends StatelessWidget {
                       );
                     },
                     child: Text(
-                      'Start now',
+                      AppLocalizations.of(context)!.startNow,
                       style: GoogleFonts.lato(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w700,
