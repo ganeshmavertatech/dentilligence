@@ -59,7 +59,7 @@ class OnboardingScreenThree extends StatelessWidget {
                       height: 20.h / 14.sp,
                     ),
                   ),
-                  SizedBox(height: 40.h),
+                  SizedBox(height: 10.h),
 
                   // Get Started button
                   SizedBox(

@@ -1,11 +1,15 @@
 import 'package:dentilligence/Bottom%20Bar/bottom_navigation_bar.dart' as custom_nav;
+import 'package:dentilligence/Controller/login_controller.dart';
 import 'package:dentilligence/constance/colors_constance.dart';
 import 'package:dentilligence/constance/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VerifyOtpPage extends StatefulWidget {
+  String? email;
+  VerifyOtpPage({super.key, this.email});
   @override
   _VerifyOtpPageState createState() => _VerifyOtpPageState();
 }
@@ -15,6 +19,7 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
   final List<TextEditingController> _otpControllers = 
       List.generate(6, (_) => TextEditingController());
   bool _allFieldsFilled = false;
+final LoginController _controller=Get.put(LoginController());
 
   @override
   void dispose() {
@@ -106,7 +111,7 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
                                     ),
                                     children: [
                                       TextSpan(
-                                        text: ' Abcdef123@gmail.com',
+                                        text: '${widget.email}',
                                          style: GoogleFonts.lato(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w700,
@@ -202,6 +207,8 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
                                 ),
                                 onPressed: _allFieldsFilled
                                     ? () {
+                                          _controller.otpVerifyApi(context,widget.email!,showErrorPopup: true,showSuccessPopup: true);
+                                          
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(

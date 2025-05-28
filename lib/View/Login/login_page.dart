@@ -26,7 +26,7 @@ final LoginController _controller=Get.put(LoginController());
         children: [
           // Top-right corner image
           Positioned(
-            top: 40,
+            top: 40,  
             right: 8,
             child: Image.asset(
               'assets/Icons/top_corner_image.png',
@@ -72,6 +72,7 @@ final LoginController _controller=Get.put(LoginController());
                   // Email field
                   TextField(
                     keyboardType: TextInputType.emailAddress,
+                    controller: _controller.emialController,
                     decoration: InputDecoration(
                       prefixIcon: Image.asset('assets/Icons/mage_email.png',height: 16,width: 16,color: Colors.black,),
                       labelText: AppLocalizations.of(context)!.emailAddress,
@@ -89,9 +90,10 @@ final LoginController _controller=Get.put(LoginController());
                     child: ElevatedButton(
                       
                       onPressed: () {
-                        Navigator.push(context,MaterialPageRoute(
-                          builder: (context) => VerifyOtpPage(),
-                        ));
+                        _controller.loginApi(context,showSuccessPopup: true,showErrorPopup: true);
+                        // Navigator.push(context,MaterialPageRoute(
+                        //   builder: (context) => VerifyOtpPage(),
+                        // ));
                       },
                       child: Text(AppLocalizations.of(context)!.continueText,
                       style: GoogleFonts.lato(

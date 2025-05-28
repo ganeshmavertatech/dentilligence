@@ -8,9 +8,9 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../Controller/registration_controller.dart';
 
 class SignUpVerifyOtpPage extends StatefulWidget {
-  final String mobile;
+  final String email;
 
-  SignUpVerifyOtpPage({required this.mobile});
+  SignUpVerifyOtpPage({required this.email});
   @override
   _SignUpVerifyOtpPageState createState() => _SignUpVerifyOtpPageState();
 }
@@ -112,7 +112,7 @@ class _SignUpVerifyOtpPageState extends State<SignUpVerifyOtpPage> {
                                     ),
                                     children: [
                                       TextSpan(
-                                        text: ' Abcdef123@gmail.com',
+                                        text: ' ${widget.email}',
                                          style: GoogleFonts.lato(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w700,
@@ -208,7 +208,7 @@ class _SignUpVerifyOtpPageState extends State<SignUpVerifyOtpPage> {
                                 ),
                                 onPressed: _allFieldsFilled
                                     ? () {
-                                      _controller.otpVerifyApi(context, widget.mobile);
+                                      _controller.otpVerifyApi(context, widget.email);
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(

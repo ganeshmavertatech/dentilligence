@@ -1,4 +1,5 @@
 import 'package:dentilligence/Repository/login_repo.dart';
+import 'package:dentilligence/View/Login/otp_verification.dart';
 import 'package:dentilligence/constance/custom_snackbar.dart';
 import 'package:dentilligence/constance/storage_service.dart';
 import 'package:flutter/material.dart';
@@ -9,13 +10,14 @@ class LoginController extends GetxController{
   final _api=LoginRepo();
 
   
-  final mobileController = TextEditingController();
+  final emialController = TextEditingController();
+    final List<TextEditingController> otpControllers = List.generate(6, (_) => TextEditingController());
 
 
-  void loginApi(BuildContext context, String role,{bool showSuccessPopup = false}) {
+
+  void loginApi(BuildContext context,{bool showSuccessPopup = false,bool showErrorPopup = true}) {
   Map<String, String> data = {
-    'mobile': mobileController.text,
-    'roleName': role,
+    'email': emialController.text,
   };
 
  _api.loginApi(data).then((value) {
@@ -23,14 +25,14 @@ class LoginController extends GetxController{
   if (value['status'] == '200') {
     CustomSnackbar.showSnackbar(context, successMessage);
     Future.delayed(const Duration(seconds: 2), () {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => VerifyOtpPage(
-      //       mobileNumber: mobileController.text,
-      //     ),
-      //   ),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => VerifyOtpPage(
+            email: emialController.text,
+          ),
+        ),
+      );
     });
   } else {
     CustomSnackbar.showSnackbar(context,
@@ -46,10 +48,10 @@ class LoginController extends GetxController{
 });
 }
 
-void otpVerifyApi(BuildContext context,String mobile,{bool showSuccessPopup = false, bool showErrorPopup = true,}) async {
+void otpVerifyApi(BuildContext context,String email,{bool showSuccessPopup = false, bool showErrorPopup = true,}) async {
   Map<String, String> data = {
-    'mobile': mobile,
-    'otp':"1111"             // otpControllers.map((controller) => controller.text).join(),
+    'email': email,
+    'otp': "111111"             // otpControllers.map((controller) => controller.text).join(),
   };
 _api.otpVerifyApi(data).then((value) async {
 //  String successMessage = value['message'] ?? 'Operation successful';

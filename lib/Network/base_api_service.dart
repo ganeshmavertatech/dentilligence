@@ -8,4 +8,10 @@ abstract class BaseApiServices {
 
   Future<dynamic>deletetApi(dynamic data,String url);
 
+  Future<dynamic> multipartPostApi(String url, {
+    required Map<String, String> fields,
+    required Map<String, String> files,
+    String? authToken,
+  });
+
 }

@@ -63,7 +63,8 @@ class RegistrationController extends GetxController {
     "country": "India",
     "ethinicity": "eastern",
     "status": "active",
-    "role_name":"admin"
+    "role_name":"admin",
+    "send_otp_to": "email"
     };
     _api.registrations(data).then((value) {
      String successMessage = value['message'] ?? 'Operation successful';
@@ -72,7 +73,7 @@ class RegistrationController extends GetxController {
         CustomSnackbar.showSnackbar(context, successMessage);
       }
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context) => SignUpVerifyOtpPage(mobile:mobileNumberController.text)),
+      Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context) => SignUpVerifyOtpPage(email:emailController.text)),
         (route) => false);
        
     });
@@ -83,10 +84,10 @@ class RegistrationController extends GetxController {
   });
 }
 
-void otpVerifyApi(BuildContext context,String mobile,{bool showSuccessPopup = false, bool showErrorPopup = true,}) async {
+void otpVerifyApi(BuildContext context,String email, {bool showSuccessPopup = false, bool showErrorPopup = true,}) async {
   Map<String, String> data = {
-    'mobile': mobile,
-    'otp':"1111"             // otpControllers.map((controller) => controller.text).join(),
+    'email': email,
+    'otp': otpControllers.map((controller) => controller.text).join(),
   };
 _api.otpVerifyApi(data).then((value) async {
 //  String successMessage = value['message'] ?? 'Operation successful';
